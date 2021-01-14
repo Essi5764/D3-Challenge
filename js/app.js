@@ -168,16 +168,21 @@ function makeResponsive() {
             .attr("cx", d => xLinearScale(d[chosenXAxis]))
             .attr("cy", d => yLinearScale(d.num_hits))
             .attr("r", 8)
-            .attr("fill", "turquoise")
-            .attr("opacity", ".5")
+            .attr("fill", "skyblue")
+            .attr("opacity", ".7")
             .classed("stateCircle", true);
         // Create circle text.
         var circleText = elemEnter.append("text")            
+            .text(d => d.abbr)
             .attr("x", d => xLinearScale(d[chosenXAxis]))
             .attr("y", d => yLinearScale(d[chosenYAxis]))
-            .attr("dy", ".35em") 
-            .text(d => d.abbr)
-            .classed("stateText", true);
+            .classed(".stateText", true)
+            .attr("font-family", "sans-serif")
+            .attr("text-anchor", "middle")
+            .attr("fill", "white")
+            .attr("font-size", "10px")
+            .style("font-weight", "bold")
+            .attr("alignment-baseline", "central");
         // Update tool tip function above csv import.
         var circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circle, circleText);
         // Add x label groups and labels.
